@@ -2,11 +2,11 @@
 This demo will create and compare your face embedding to face embeddings you created beforehand. 
 
 **Files:**<br/>
-aidemo.py       : contains the GUI of the Demo<br/>
-ai.py           : contains the Neural Network creating the Embeddings. It Returns Euclidian Distance and index of the minimal euclidain distance.<br/>
-cameraimx8mp.py : contains the gstreamer pipeline to read in the camera image when used on the ARM device<br/>
-camerapc.py     : contains the opencv pipeline to read in the camera image when used on the x86 device<br/>
-v4l2_2.py       : contains the video for Linux settings<br/>
+*aidemo.py*<pre>       </pre>: contains the GUI of the Demo<br/>
+*ai.py*<pre>           </pre>: contains the Neural Network creating the Embeddings. It Returns Euclidian Distance and index of the minimal euclidain distance.<br/>
+*cameraimx8mp.py*<pre> </pre>: contains the gstreamer pipeline to read in the camera image when used on the ARM device<br/>
+*camerapc.py*<pre>     </pre>: contains the opencv pipeline to read in the camera image when used on the x86 device<br/>
+*v4l2_2.py*<pre>       </pre>: contains the video for Linux settings<br/>
 
 **Prerequisite:**<br/>
 After cloning the git repository please add the model file which you can find [here (13)](https://mega.nz/file/kZkziCqT#hddnG2MoEWf4YqDfQUSyyJgzraCN_Dh-DOsspy5D2zY), [here (15)](https://mega.nz/file/4B0BjKhA#gOoGpmufVrbY3EJ1Zv6Jks9aSKBJnDRZ6w9NbVnVKPQ), [here (15 all int)](https://mega.nz/file/5c1BBaxK#j-CCgjag5hsjoyBh4QYz5rwdq1CLPCTVzxD4WVAS0RY), and [here (220 all int)](https://mega.nz/file/NRshSYaD#j-CCgjag5hsjoyBh4QYz5rwdq1CLPCTVzxD4WVAS0RY) to the demo-data/
