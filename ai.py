@@ -12,7 +12,7 @@ import concurrent.futures
 times = []
 
 
-class Ai:
+class AI:
     def __init__(self, model_path, embeddings_path, modeltype='quant',
                  runtime='tflite', preferred_backend='npu'):
         self.model_path = model_path
@@ -124,6 +124,25 @@ class Ai:
         print('EUdist duration: {}'.format(time.time() - start))
 
         return folder_name, file_name, distance, idx
+    
+    def plt_time(times):
+        import matplotlib.pyplot as plt
+        import matplotlib.animation as animation
+        
+        fig = plt.figure()
+        ax1 = fig.add_subplot(1,1,1)
+        
+        mittelwert= [np.mean(times)]*len(times)
+
+        def animate(times, mittelwert):
+            xaxse=len(times)
+            ax1.clear()
+            ax1.plot(range(len(times)), times)
+            ax1.plot(range(len(times)), mittelwert)
+        anim = animation.FuncAnimation(fig, animate,interval=20)
+        plt.show()
+        
+
 
     def init_armnn(self):
         self.parser = ann.ITfLiteParser()
@@ -255,7 +274,7 @@ if __name__ == '__main__':
     model_file = 'models/tflite/quantized_modelh5-15.tflite'
     #embeddings_file = 'EMBEDDINGS_tf220_all_int8.json'
     embeddings_file = 'EMBEDDINGS_quantized_modelh5-15.json'
-    new_ai = Ai(os.path.join(sys.path[0], model_file),
+    new_ai = AI(os.path.join(sys.path[0], model_file),
                 os.path.join(sys.path[0], embeddings_file),
                 modeltype = 'normal', runtime='tflite', preferred_backend='npu')
 
@@ -279,11 +298,11 @@ if __name__ == '__main__':
             print('SHIRLEY:', result)
             result = new_ai.run_inference(vin)
             print('VIN:', result)
-
+            
         except KeyboardInterrupt:
             print('Interrupted')
             break
-
+    
     with open('times.txt', 'w') as f:
         for t in times:
             f.write(str(t))
