@@ -117,14 +117,13 @@ class Ai:
         #        f.write('\n')
 
 
-        min_idx = np.argmin(EUdist)
-        folder_name = self.names[min_idx]
-        file_name = self.files[min_idx]
-        distance = EUdist[min_idx]
-
+        idx = np.argpartition(EUdist, 5)                
+        folder_name= self.names[idx[0]]
+        file_name = self.files[idx[0]] 
+        distance = EUdist[idx[0]]
         print('EUdist duration: {}'.format(time.time() - start))
 
-        return folder_name, file_name, distance
+        return folder_name, file_name, distance, idx
 
     def init_armnn(self):
         self.parser = ann.ITfLiteParser()
